@@ -1,0 +1,13 @@
+CC   := gcc
+OBJS := tcp_socket.o file_transfer.o server.o
+
+server : $(OBJS)
+	CC $^ -o $@ -lpthread
+	echo "Done."
+
+%.o : %.c
+	CC -c $< -o $@
+
+clean:
+	rm -rf *.o server
+	echo "Done."
